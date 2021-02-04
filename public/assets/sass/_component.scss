@@ -40,7 +40,12 @@
       transform: translateY(0);
     }
   }
+
+  & .dropdown-menu {
+    font-size: 1.1rem;
+  }
 }
+
 
 //LE MAIN
 .main {

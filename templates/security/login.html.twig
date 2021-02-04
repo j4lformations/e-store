@@ -38,7 +38,7 @@
                 <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
 
                 <div class="small text-center my-4">
-                    <a href="{#{{ path('app_forgot_password_request') }}#}" class="link-info">Mot de passe oublié ?</a>
+                    <a href="{{ path('app_forgot_password_request') }}" class="link-info">Mot de passe oublié ?</a>
                 </div>
 
                 <div class="row form__group my-4">

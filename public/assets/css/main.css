@@ -68,6 +68,9 @@ body {
 .header .nav-link:active {
   transform: translateY(0);
 }
+.header .dropdown-menu {
+  font-size: 1.1rem;
+}
 
 .main {
   min-height: 50vh;

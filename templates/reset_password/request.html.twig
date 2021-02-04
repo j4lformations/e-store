@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Reset your password{% endblock %}
+
+{% set formValid = requestForm.vars['valid'] %}
+{% set formErrors = requestForm.vars.errors.form.getErrors(true) %}
+
+{% block reset_password %}
+    <div class="reset_password">
+
+        {% for flashError in app.flashes('reset_password_error') %}
+            <div class="alert alert-danger" role="alert">{{ flashError }}</div>
+        {% endfor %}
+
+        {% if not formValid %}
+            <div class="alert alert-danger">
+                <ul>
+                    {% for error in formErrors %}
+                        <li>{{ error.message }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endif %}
+
+        <div class="reset_password--titre">Réinitialisez votre mot de passe</div>
+        {{ form_start(requestForm, {'attr':{'class':'form', 'autocomplete':'off'}}) }}
+        <p class="mb-3">
+            <small>
+                Entrez votre adresse e-mail et nous vous enverrons un lien pour réinitialiser votre mot de passe.
+            </small>
+        </p>
+        <div class="row form__group gx-5 my-4">
+            {{ form_label(requestForm.email, 'email',{'label_attr':{'class':'form_label'}}) }}
+            {{ form_widget(requestForm.email, {'attr':{'class':'form-control form_input','placeholder':'Saisir votre email de connexion'}}) }}
+        </div>
+        <div class="row gx-5 my-4">
+            <div class="col-sm-6 col-md-6">
+                <button type="submit" class="btn-sm btn btn-primary">reinitialiser</button>
+            </div>
+            <div class="col-sm-6 col-md-6">
+                <a href="{{ path('app_login') }}" class="btn-sm btn btn-secondary float-end">retour au login</a>
+            </div>
+        </div>
+        {{ form_end(requestForm) }}
+    </div>
+{% endblock %}
