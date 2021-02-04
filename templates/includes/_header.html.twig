@@ -1,0 +1,49 @@
+{# ==>HEADER #}
+<div class="header">
+    <nav class="navbar navbar-expand-md navbar-light bg-light px-3">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="{{ path('store_accueil') }}">
+                <img src="{{ asset('assets/images/app/symfony.svg') }}" alt="logo" class="logo">
+                <span>e-store</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+                <ul class="navbar-nav ms-auto mb-2 mb-md-0">
+                    <li class="nav-item active">
+                        <a class="nav-link mx-5" aria-current="page" href="#"><i class="fas fa-cart-arrow-down"></i>
+                            panier</a>
+                    </li>
+                    {% if is_granted('ROLE_USER') %}
+                        <li class="nav-item dropdown">
+                            <a class="nav-link mx-1 dropdown-toggle" href="#" id="dropdown01" data-bs-toggle="dropdown"
+                               aria-expanded="false"><i class="fas fa-house-user"></i> mon compte</a>
+                            <ul class="dropdown-menu" aria-labelledby="dropdown01">
+                                <li><a class="dropdown-item" href="#"><i class="fas fa-user-circle"></i> {{ app.user }}
+                                    </a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" href="#"><i
+                                                class="fas fa-sign-out-alt"></i> Logout</a></li>
+                            </ul>
+                        </li>
+                    {% else %}
+                        <li class="nav-item">
+                            <a class="nav-link mx-1" href="#"><i class="fas fa-user-plus"></i>
+                                register</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link mx-1" href="#"><i class="fas fa-sign-in-alt"></i>
+                                login</a>
+                        </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </nav>
+</div>
+{# HEADER==>     #}

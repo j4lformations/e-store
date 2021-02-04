@@ -1,0 +1,255 @@
+//LE CONTENEUR
+.container {
+  //background-color: $couleur-gris-clair-2;
+  font-size: 1.1 * $mesure-principal;
+}
+
+//LE LOGO
+.logo {
+  height: 5.5rem;
+}
+
+//LE HEADER
+.header {
+  font-size: 1.3rem;
+
+  & .navbar-brand {
+    span {
+      font-family: 'Aladin', cursive;
+      font-size: 4rem;
+      padding-left: 1rem;
+      color: $couleur-bleu-sombre-1;
+    }
+  }
+
+  & .navbar-nav {
+    text-transform: capitalize;
+  }
+
+  & .nav {
+    &-link:hover, &-link:active {
+      font-weight: bolder;
+      color: $couleur-bleu-sombre-1 !important;
+    }
+
+    &-link:hover {
+      transform: translateY(-3px);
+    }
+
+    &-link:active {
+      transform: translateY(0);
+    }
+  }
+}
+
+//LE MAIN
+.main {
+  min-height: 50vh;
+  font-size: 1.4 * $mesure-principal;
+
+  & .user_form {
+    &--titre {
+      font-size: 2.5 * $mesure-principal;
+      font-family: 'Aladin', cursive;
+      font-weight: 400;
+      text-transform: uppercase;
+      text-align: center;
+      padding: 2 * $mesure-principal 3 * $mesure-principal;
+      background-color: $couleur-bleu-sombre-1;
+      color: #fff;
+    }
+
+    width: 40%;
+    margin: 10 * $mesure-principal auto;
+  }
+
+  .filtre {
+    margin-bottom: 2 * $mesure-principal;
+
+    &__titre {
+      font-size: 2.5 * $mesure-principal;
+      font-family: 'Aladin', cursive;
+      font-weight: 400;
+      text-transform: uppercase;
+      text-align: center;
+      padding: 1 * $mesure-principal 3 * $mesure-principal;
+      background-color: $couleur-bleu-sombre-1;
+      color: #fff;
+    }
+
+    .list-group-item {
+      border: none;
+    }
+
+    .form-check-input {
+      width: 1.5 * $mesure-principal;
+      height: 1.5 * $mesure-principal;
+      //margin-top: .25em;
+      vertical-align: center;
+    }
+  }
+
+  .nom_album {
+    margin: -3.3rem auto 1rem;
+    background-color: $couleur-gris-sombre-1;
+    text-align: center;
+    color: white;
+    width: 80%;
+    padding: 1rem;
+    position: relative;
+  }
+
+  .card {
+    overflow: hidden;
+    color: #0a0a0a;
+    background-color: $couleur-gris-clair-1;
+    border: 0;
+    border-radius: 0;
+
+    .card-body {
+      border: none;
+      background-color: #f1f8e9;
+    }
+
+    & .composition {
+      background-image: -webkit-gradient(linear, left top, right bottom, from($couleur-bleu-clair-2), to($couleur-bleu-sombre-1));
+      background-image: linear-gradient(to right bottom, $couleur-bleu-clair-2, $couleur-bleu-sombre-1);
+      background-size: cover;
+      background-repeat: no-repeat;
+      opacity: 0.6;
+    }
+  }
+}
+
+//LES FORMULAIRES
+.form {
+  padding: 1 * $mesure-principal 3 * $mesure-principal;
+  position: relative;
+  background-color: $couleur-gris-clair-2;
+
+  & .form-error-icon {
+    color: #A11B4C;
+  }
+
+  & .form_input {
+    font-size: 1.3 * $mesure-principal;
+    font-family: inherit;
+    color: inherit;
+    padding: 1 * $mesure-principal 2 * $mesure-principal;
+    border-radius: 0;
+    border: none;
+    border-bottom: 3px solid transparent;
+  }
+
+  & .form_label {
+    font-size: 1.3 * $mesure-principal;
+    font-weight: 700;
+    padding-top: $mesure-principal;
+    transition: all .3s;
+    text-transform: capitalize;
+    color: $couleur-bleu-sombre-1;
+  }
+}
+
+//LES BOUTONS
+.btn {
+  &,
+  &:link,
+  &:visited {
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 1 * $mesure-principal;
+    display: inline-block;
+    border-radius: 0;
+    transition: all .2s;
+    position: relative;
+    font-size: $mesure-principal;
+
+    //Change for the <button> element
+    border: none;
+    cursor: pointer;
+  }
+
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 1rem 2rem rgba($couleur-bleu-clair-4, .2);
+
+    &::after {
+      transform: scaleX(1.4) scaleY(1.6);
+      opacity: 0;
+    }
+  }
+
+  &:active,
+  &:focus {
+    outline: none;
+    transform: translateY(-1px);
+    box-shadow: 0 .5 * $mesure-principal $mesure-principal rgba($couleur-bleu-clair-1, .2);
+  }
+}
+
+//LE FOOTER
+.footer {
+  background-color: #01579b !important;
+  padding: 5 * $mesure-principal;
+  font-size: $mesure-principal;
+
+  & .copyright {
+    margin-top: 6rem;
+    margin-right: auto;
+    margin-left: auto;
+    text-align: center;
+    width: 70%;
+  }
+}
+
+//EMAIL RESET
+.send-email-link {
+  width: 50%;
+  margin: 10rem auto;
+  padding: 3rem 3rem 0;
+  font-size: 1.3 * $mesure-principal;
+
+  &__exp {
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: 800;
+    color: #d81b60;
+  }
+}
+
+.reset_password, .register {
+  width: 45%;
+  margin: 10rem auto;
+
+  &--titre {
+    display: inline-block;
+    width: 100%;
+    font-size: 2.5 * $mesure-principal;
+    font-family: 'Aladin', cursive;
+    font-weight: 400;
+    text-transform: uppercase;
+    text-align: center;
+    padding: 2 * $mesure-principal 3 * $mesure-principal;
+    background-color: $couleur-bleu-sombre-1;
+    color: #fff;
+  }
+
+  small {
+    color: $couleur-bleu-sombre-1;
+    font-style: italic;
+    text-align: justify;
+  }
+}
+
+.card {
+  .card-msg {
+    color: $couleur-bleu-sombre-1;
+  }
+
+  .card-info {
+    text-align: center;
+  }
+}
+
+

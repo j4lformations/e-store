@@ -1,3 +1,246 @@
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Fraunces&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Aladin&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+}
 
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+  font-size: 62.5%;
+}
+
+body {
+  line-height: 1.6;
+  background-image: linear-gradient(#90caf9, #1565c0);
+  background-size: cover;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+}
+
+.bd-placeholder-img {
+  font-size: 1.125rem;
+  text-anchor: middle;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+}
+
+@media (min-width: 768px) {
+  .bd-placeholder-img-lg {
+    font-size: 3.5rem;
+  }
+}
+.container {
+  font-size: 1.1rem;
+}
+
+.logo {
+  height: 5.5rem;
+}
+
+.header {
+  font-size: 1.3rem;
+}
+.header .navbar-brand span {
+  font-family: "Aladin", cursive;
+  font-size: 4rem;
+  padding-left: 1rem;
+  color: #1565c0;
+}
+.header .navbar-nav {
+  text-transform: capitalize;
+}
+.header .nav-link:hover, .header .nav-link:active {
+  font-weight: bolder;
+  color: #1565c0 !important;
+}
+.header .nav-link:hover {
+  transform: translateY(-3px);
+}
+.header .nav-link:active {
+  transform: translateY(0);
+}
+
+.main {
+  min-height: 50vh;
+  font-size: 1.4rem;
+}
+.main .user_form {
+  width: 40%;
+  margin: 10rem auto;
+}
+.main .user_form--titre {
+  font-size: 2.5rem;
+  font-family: "Aladin", cursive;
+  font-weight: 400;
+  text-transform: uppercase;
+  text-align: center;
+  padding: 2rem 3rem;
+  background-color: #1565c0;
+  color: #fff;
+}
+.main .filtre {
+  margin-bottom: 2rem;
+}
+.main .filtre__titre {
+  font-size: 2.5rem;
+  font-family: "Aladin", cursive;
+  font-weight: 400;
+  text-transform: uppercase;
+  text-align: center;
+  padding: 1rem 3rem;
+  background-color: #1565c0;
+  color: #fff;
+}
+.main .filtre .list-group-item {
+  border: none;
+}
+.main .filtre .form-check-input {
+  width: 1.5rem;
+  height: 1.5rem;
+  vertical-align: center;
+}
+.main .nom_album {
+  margin: -3.3rem auto 1rem;
+  background-color: #333;
+  text-align: center;
+  color: white;
+  width: 80%;
+  padding: 1rem;
+  position: relative;
+}
+.main .card {
+  overflow: hidden;
+  color: #0a0a0a;
+  background-color: #faf9f9;
+  border: 0;
+  border-radius: 0;
+}
+.main .card .card-body {
+  border: none;
+  background-color: #f1f8e9;
+}
+.main .card .composition {
+  background-image: -webkit-gradient(linear, left top, right bottom, from(#64b5f6), to(#1565c0));
+  background-image: linear-gradient(to right bottom, #64b5f6, #1565c0);
+  background-size: cover;
+  background-repeat: no-repeat;
+  opacity: 0.6;
+}
+
+.form {
+  padding: 1rem 3rem;
+  position: relative;
+  background-color: #f4f2f2;
+}
+.form .form-error-icon {
+  color: #A11B4C;
+}
+.form .form_input {
+  font-size: 1.3rem;
+  font-family: inherit;
+  color: inherit;
+  padding: 1rem 2rem;
+  border-radius: 0;
+  border: none;
+  border-bottom: 3px solid transparent;
+}
+.form .form_label {
+  font-size: 1.3rem;
+  font-weight: 700;
+  padding-top: 1rem;
+  transition: all 0.3s;
+  text-transform: capitalize;
+  color: #1565c0;
+}
+
+.btn, .btn:link, .btn:visited {
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 1rem;
+  display: inline-block;
+  border-radius: 0;
+  transition: all 0.2s;
+  position: relative;
+  font-size: 1rem;
+  border: none;
+  cursor: pointer;
+}
+.btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 1rem 2rem rgba(187, 222, 251, 0.2);
+}
+.btn:hover::after {
+  transform: scaleX(1.4) scaleY(1.6);
+  opacity: 0;
+}
+.btn:active, .btn:focus {
+  outline: none;
+  transform: translateY(-1px);
+  box-shadow: 0 0.5rem 1rem rgba(66, 165, 245, 0.2);
+}
+
+.footer {
+  background-color: #01579b !important;
+  padding: 5rem;
+  font-size: 1rem;
+}
+.footer .copyright {
+  margin-top: 6rem;
+  margin-right: auto;
+  margin-left: auto;
+  text-align: center;
+  width: 70%;
+}
+
+.send-email-link {
+  width: 50%;
+  margin: 10rem auto;
+  padding: 3rem 3rem 0;
+  font-size: 1.3rem;
+}
+.send-email-link__exp {
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: 800;
+  color: #d81b60;
+}
+
+.reset_password, .register {
+  width: 45%;
+  margin: 10rem auto;
+}
+.reset_password--titre, .register--titre {
+  display: inline-block;
+  width: 100%;
+  font-size: 2.5rem;
+  font-family: "Aladin", cursive;
+  font-weight: 400;
+  text-transform: uppercase;
+  text-align: center;
+  padding: 2rem 3rem;
+  background-color: #1565c0;
+  color: #fff;
+}
+.reset_password small, .register small {
+  color: #1565c0;
+  font-style: italic;
+  text-align: justify;
+}
+
+.card .card-msg {
+  color: #1565c0;
+}
+.card .card-info {
+  text-align: center;
+}
 
 /*# sourceMappingURL=main.css.map */

@@ -16,9 +16,20 @@
 </head>
 
 <body>
-{% block body %}
-    {% block header %}{% endblock %}
-    {% block main %}{% endblock %}
-{% endblock %}
+<div class="container">
+    {% block body %}
+        {% block header %}{% endblock %}
+        {% block main %}
+            <div class="main">
+                {% block login %}{% endblock %}
+                {% block register %}{% endblock %}
+                {% block album %}{% endblock %}
+                {% block footer %}
+                    {{ include('includes/_footer.html.twig') }}
+                {% endblock %}
+            </div>
+        {% endblock %}
+    {% endblock %}
+</div>
 </body>
 </html>
