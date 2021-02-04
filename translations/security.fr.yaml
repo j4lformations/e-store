@@ -1,0 +1,6 @@
+Invalid credentials.: Vos paramètres de connexions sont non valides !!!
+Username could not be found.: Attention, cet utilisateur est inconnu du système !!!
+Invalid CSRF token.: Token non valide !!!
+The password fields must match.: Les champs du mot de passe doivent correspondre.
+Enter your new password !: Saisir votre nouveau mot de passe !
+Repeat entering your new password !: Repetez la saisie de votre nouveau mot de passe
