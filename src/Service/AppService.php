@@ -6,19 +6,33 @@ namespace App\Service;
 
 class AppService
 {
+    public static function isValid(?string $name): bool
+    {
+        return !(!isset($name) || trim($name) === '');
+    }
+
     public static function capitalize(string $chaine): string
     {
-        return ucwords(mb_strtolower($chaine));
+        if (self::isValid($chaine)) {
+            return ucwords(mb_strtolower($chaine));
+        }
+        return '';
     }
 
-    public static function uppercase(string $chaine)
+    public static function uppercase(string $chaine): string
     {
-        return mb_strtoupper($chaine);
+        if (self::isValid($chaine)) {
+            return mb_strtoupper($chaine);
+        }
+        return '';
     }
 
-    public static function lowercase(string $chaine)
+    public static function lowercase(string $chaine): string
     {
-        return mb_strtolower($chaine);
+        if (self::isValid($chaine)) {
+            return mb_strtolower($chaine);
+        }
+        return '';
     }
 
     public static function concactene(string $prenom, string $nom): string

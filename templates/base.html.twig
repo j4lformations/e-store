@@ -18,7 +18,9 @@
 <body>
 <div class="container">
     {% block body %}
-        {% block header %}{% endblock %}
+        {% block header %}
+            {{ include('includes/_header.html.twig') }}
+        {% endblock %}
         {% block main %}
             <div class="main">
                 {% block login %}{% endblock %}

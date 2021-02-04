@@ -1,0 +1,65 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{ pageTitre }}
+{% endblock %}
+
+{% block login %}
+    <div class="user_form">
+
+        {% if error %}
+            <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+        {% endif %}
+
+        {% for flashSuccess in app.flashes('success') %}
+            <div class="alert alert-success" role="alert">{{ flashSuccess }}</div>
+        {% endfor %}
+
+        <div class="shadow-lg">
+            <div class="user_form--titre">Connectez-vous</div>
+            <form class="form" autocomplete="off" method="post">
+                <div class="row form__group my-4">
+                    <label for="email" class="col-md-2 col-form-label form_label">Email</label>
+                    <div class="col-md-10">
+                        <input type="email" value="{{ last_username }}" name="email" id="email"
+                               class="form-control form_input"
+                               placeholder="Votre email de connexion"
+                               required autofocus>
+                    </div>
+                </div>
+                <div class="row form__group my-4">
+                    <label for="password" class="col-md-2 col-form-label form_label">Password</label>
+                    <div class="col-md-10">
+                        <input type="password" name="password" id="password" class="form-control form_input"
+                               placeholder="Votre mot de passe" required>
+                    </div>
+                </div>
+
+                <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+
+                <div class="small text-center my-4">
+                    <a href="{#{{ path('app_forgot_password_request') }}#}" class="link-info">Mot de passe oublié ?</a>
+                </div>
+
+                <div class="row form__group my-4">
+                    <div class="col-md-10 offset-md-2">
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" id="rm" name="_remember_me">
+                            <label class="form-check-label" for="rm">
+                                Remember me
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row my-4">
+                    <div class="col-sm-6 col-md-6">
+                        <button type="submit" class="btn-sm btn btn-primary">valider</button>
+                    </div>
+                    <div class="col-sm-6 col-md-6">
+                        <button type="reset" class="btn-sm btn btn-secondary float-end">annuler</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}
