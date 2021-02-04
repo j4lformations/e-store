@@ -2,10 +2,26 @@
 
 {% block title %}Password Reset Email Sent{% endblock %}
 
-{% block body %}
-    <p>
-        An email has been sent that contains a link that you can click to reset your password.
-        This link will expire in {{ resetToken.expirationMessageKey|trans(resetToken.expirationMessageData, 'ResetPasswordBundle') }}.
-    </p>
-    <p>If you don't receive an email please check your spam folder or <a href="{{ path('app_forgot_password_request') }}">try again</a>.</p>
+{% block reset_password %}
+    <div class="send-email-link card">
+        <p class="card-msg">
+            Un e-mail contenant un lien de reinitialisation de votre mot de passe vous a été envoyé à l'adresse
+            indiquée.
+        </p>
+        <p class="send-email-link__exp">
+            Ce lien expirera
+            dans {{ resetToken.expirationMessageKey|trans(resetToken.expirationMessageData, 'ResetPasswordBundle') }}.
+        </p>
+        <p class="card-info fw-bold fst-italic text-secondary">
+            <small>
+                Si vous ne recevez pas d'e-mail, veuillez vérifier votre dossier spam ou réessayer avec le lien
+                ci-dessous.
+            </small>
+        </p>
+
+        <div class="border-top py-4">
+            <a class="btn btn-primary" href="{{ path('app_forgot_password_request') }}">Veuilez réessayer</a>
+            <a class="float-end btn btn-secondary" href="{{ path('app_login') }}">Retour au login</a>
+        </div>
+    </div>
 {% endblock %}

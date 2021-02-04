@@ -2,11 +2,35 @@
 
 {% block title %}Reset your password{% endblock %}
 
-{% block body %}
-    <h1>Reset your password</h1>
+{% set formValid = resetForm.vars['valid'] %}
+{% set formErrors = resetForm.vars.errors.form.getErrors(true) %}
 
-    {{ form_start(resetForm) }}
-        {{ form_row(resetForm.plainPassword) }}
-        <button class="btn btn-primary">Reset password</button>
-    {{ form_end(resetForm) }}
+{% block reset_password %}
+    <div class="reset_password">
+
+        {% if not formValid %}
+            <div class="alert alert-danger">
+                <ul>
+                    {% for error in formErrors %}
+                        <li>{{ error.message }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endif %}
+
+        <div class="reset_password--titre">Réinitialisez votre mot de passe</div>
+        {{ form_start(resetForm,{'attr':{'class':'form', 'autocomplete':'off'}}) }}
+        <div class="row form__group gx-5 my-4">
+            {{ form_widget(resetForm.plainPassword) }}
+        </div>
+        <div class="row gx-5 my-4">
+            <div class="col-sm-6 col-md-6">
+                <button type="submit" class="btn-sm btn btn-primary">valider</button>
+            </div>
+            <div class="col-sm-6 col-md-6 badge badge-danger">
+                <a href="{{ path('app_login') }}"  class="btn-sm btn btn-secondary float-end">retour au login</a>
+            </div>
+        </div>
+        {{ form_end(resetForm) }}
+    </div>
 {% endblock %}
