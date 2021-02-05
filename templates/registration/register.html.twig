@@ -1,0 +1,85 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Register{% endblock %}
+
+{% block register %}
+
+    {% set formValid = registrationForm.vars['valid'] %}
+    {% set formErrors = registrationForm.vars.errors.form.getErrors(true) %}
+
+    <div class="user_form">
+
+        {% for flashError in app.flashes('verify_email_error') %}
+            <div class="alert alert-danger" role="alert">{{ flashError }}</div>
+        {% endfor %}
+
+        {% if not formValid %}
+            <div class="alert alert-danger">
+                <ul>
+                    {% for error in formErrors %}
+                        <li>{{ error.message }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endif %}
+
+        <div class="shadow-lg">
+            <div class="user_form--titre">s'inscrire</div>
+            {{ form_start(registrationForm, {'attr': {'class':'form', 'autocomplete':'off'}}) }}
+            <div class="container overflow-hidden">
+                <div class="row gx-5 my-4">
+                    <div class="col">
+                        <div class="form__group">
+                            {{ form_label(registrationForm.prenom, 'prénom',{'label_attr':{'class':'form_label'}}) }}
+                            {{ form_widget(registrationForm.prenom, {'attr':{'class':'form-control form_input', 'placeholder':'Votre prénom'}}) }}
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form__group">
+                            {{ form_label(registrationForm.nom, 'nom',{'label_attr':{'class':'form_label'}}) }}
+                            {{ form_widget(registrationForm.nom, {'attr':{'class':'form-control form_input', 'placeholder':'Votre nom'}}) }}
+                        </div>
+                    </div>
+                </div>
+                <div class="row gx-5 my-4">
+                    <div class="col">
+                        <div class="form__group">
+                            {{ form_label(registrationForm.email, 'email',{'label_attr':{'class':'form_label'}}) }}
+                            {{ form_widget(registrationForm.email, {'attr':{'class':'form-control form_input', 'placeholder':'Votre email'}}) }}
+                        </div>
+                    </div>
+                </div>
+                <div class="row gx-5 my-4">
+                    <div class="col">
+                        <div class="form__group">
+                            {{ form_label(registrationForm.plainPassword['first'], 'mot de passe',{'label_attr':{'class':'form_label'}}) }}
+                            {{ form_widget(registrationForm.plainPassword['first']) }}
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form__group">
+                            {{ form_label(registrationForm.plainPassword['second'], 'mot de passe',{'label_attr':{'class':'form_label'}}) }}
+                            {{ form_widget(registrationForm.plainPassword['second'], {'attr':{'class':'form-control form_input', 'placeholder':'Repetez la saisie de votre mot de passe'}}) }}
+                        </div>
+                    </div>
+                </div>
+                <div class="row gx-5 my-4">
+                    <div class="col">
+                        <div class="form-check form-switch">
+                            {{ form_widget(registrationForm.agreeTerms) }}
+                        </div>
+                    </div>
+                </div>
+                <div class="row gx-5 my-4">
+                    <div class="col-sm-6 col-md-6">
+                        <button type="submit" class="btn-sm btn btn-primary">valider</button>
+                    </div>
+                    <div class="col-sm-6 col-md-6">
+                        <button type="reset" class="btn-sm btn btn-secondary float-end">annuler</button>
+                    </div>
+                </div>
+            </div>
+            {{ form_end(registrationForm) }}
+        </div>
+    </div>
+{% endblock %}

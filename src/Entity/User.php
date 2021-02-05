@@ -59,6 +59,11 @@ class User implements UserInterface
      */
     private ?DateTime $updatedAt;
 
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $isVerified = false;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -215,5 +220,17 @@ class User implements UserInterface
     public function __toString(): string
     {
         return $this->getNomComplet();
+    }
+
+    public function isVerified(): bool
+    {
+        return $this->isVerified;
+    }
+
+    public function setIsVerified(bool $isVerified): self
+    {
+        $this->isVerified = $isVerified;
+
+        return $this;
     }
 }

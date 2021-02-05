@@ -1,0 +1,192 @@
+{% block register %}
+
+    {% set formValid = registrationForm.vars['valid'] %}
+    {% set formErrors = registrationForm.vars.errors.form.getErrors(true) %}
+
+    <div class="user_form">
+
+        {% for flashError in app.flashes('verify_email_error') %}
+            <div class="alert alert-danger" role="alert">{{ flashError }}</div>
+        {% endfor %}
+
+        {% if not formValid %}
+            <div class="alert alert-danger">
+                <ul>
+                    {% for error in formErrors %}
+                        <li>{{ error.message }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endif %}
+
+        <div class="shadow-lg">
+            <div class="user_form--titre">s'inscrire</div>
+            {{ form_start(registrationForm, {'attr': {'class':'form', 'autocomplete':'off'}}) }}
+            <div class="container overflow-hidden">
+                <div class="row gx-5 my-4">
+                    <div class="col">
+                        <div class="form__group">
+                            {{ form_label(registrationForm.prenom, 'prénom',{'label_attr':{'class':'form_label'}}) }}
+                            {{ form_widget(registrationForm.prenom, {'attr':{'class':'form-control form_input', 'placeholder':'Votre prénom'}}) }}
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form__group">
+                            {{ form_label(registrationForm.nom, 'nom',{'label_attr':{'class':'form_label'}}) }}
+                            {{ form_widget(registrationForm.nom, {'attr':{'class':'form-control form_input', 'placeholder':'Votre nom'}}) }}
+                        </div>
+                    </div>
+                </div>
+                <div class="row gx-5 my-4">
+                    <div class="col">
+                        <div class="form__group">
+                            {{ form_label(registrationForm.email, 'email',{'label_attr':{'class':'form_label'}}) }}
+                            {{ form_widget(registrationForm.email, {'attr':{'class':'form-control form_input', 'placeholder':'Votre email'}}) }}
+                        </div>
+                    </div>
+                </div>
+                <div class="row gx-5 my-4">
+                    <div class="col">
+                        <div class="form__group">
+                            {{ form_label(registrationForm.plainPassword['first'], 'mot de passe',{'label_attr':{'class':'form_label'}}) }}
+                            {{ form_widget(registrationForm.plainPassword['first']) }}
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form__group">
+                            {{ form_label(registrationForm.plainPassword['second'], 'mot de passe',{'label_attr':{'class':'form_label'}}) }}
+                            {{ form_widget(registrationForm.plainPassword['second'], {'attr':{'class':'form-control form_input', 'placeholder':'Repetez la saisie de votre mot de passe'}}) }}
+                        </div>
+                    </div>
+                </div>
+                <div class="row gx-5 my-4">
+                    <div class="col">
+                        <div class="form-check form-switch">
+                            {{ form_widget(registrationForm.agreeTerms) }}
+                        </div>
+                    </div>
+                </div>
+                <div class="row gx-5 my-4">
+                    <div class="col-sm-6 col-md-6">
+                        <button type="submit" class="btn-sm btn btn-primary">valider</button>
+                    </div>
+                    <div class="col-sm-6 col-md-6">
+                        <button type="reset" class="btn-sm btn btn-secondary float-end">annuler</button>
+                    </div>
+                </div>
+            </div>
+            {{ form_end(registrationForm) }}
+        </div>
+    </div>
+{% endblock %}
+
+
+=============================================================================
+
+<?php
+
+namespace App\Form;
+
+use App\Entity\User;
+use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
+use Symfony\Component\Form\Extension\Core\Type\PasswordType;
+use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
+use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints\IsTrue;
+use Symfony\Component\Validator\Constraints\Length;
+use Symfony\Component\Validator\Constraints\NotBlank;
+
+class RegistrationFormType extends AbstractType
+{
+    public function buildForm(FormBuilderInterface $builder, array $options)
+    {
+        $builder
+            ->add('prenom', null,
+                [
+                    'attr' => [
+                        'class' => 'form-control form_input',
+                        'placeholder' => 'Veuillez saisir votre prénom svp !',
+                        'error_bubbling' => true,
+                        'autofocus' => true
+                    ]
+                ])
+            ->add('nom', null,
+                [
+                    'attr' => [
+                        'class' => 'form-control form_input',
+                        'placeholder' => 'Veuillez saisir votre nom svp !'
+                    ],
+                    'error_bubbling' => true
+                ])
+            ->add('email', EmailType::class,
+                [
+                    'attr' => [
+                        'class' => 'form-control form_input',
+                        'placeholder' => 'Saisir votre email de connexion !'
+                    ],
+                    'error_bubbling' => true
+                ])
+            ->add('plainPassword', RepeatedType::class, [
+                'type' => PasswordType::class,
+                'first_options' => [
+                    'constraints' => [
+                        new NotBlank([
+                            'message' => 'Please enter a password',
+                        ]),
+                        new Length([
+                            'min' => 6,
+                            'minMessage' => 'Your password should be at least {{ limit }} characters',
+                            // max length allowed by Symfony for security reasons
+                            'max' => 4096,
+                        ]),
+                    ],
+                    'label' => 'Mot de passe',
+                    'attr' => [
+                        'placeholder' => 'Saisir votre mot de passe !',
+                        'class' => 'form-control form_input'
+                    ]
+                ],
+                'second_options' => [
+                    'label' => 'Repetez le mot de passe',
+                    'attr' => [
+                        'placeholder' => 'Repetez la saisie de votre mot de passe !',
+                        'class' => 'form-control form_input'
+                    ]
+                ],
+                'invalid_message' => 'The password fields must match.',
+                // Instead of being set onto the object directly,
+                // this is read and encoded in the controller
+                'mapped' => false,
+                'error_bubbling' => true
+            ])
+            ->add('agreeTerms', CheckboxType::class, [
+                'mapped' => false,
+                'constraints' => [
+                    new IsTrue([
+                        'message' => 'You should agree to our terms.',
+                    ]),
+
+                ],
+                'label' => 'Accepter les termes',
+                'label_attr' => [
+                    'class' => 'form-check-label'
+                ],
+                'attr' => [
+                    'class' => 'form-check-input'
+                ],
+                'error_bubbling' => true
+            ]);
+    }
+
+    public function configureOptions(OptionsResolver $resolver)
+    {
+        $resolver->setDefaults([
+            'data_class' => User::class,
+        ]);
+    }
+}
+
+=================================================================================

@@ -2,5 +2,5 @@ The password fields must match.: Les champs du mot de passe doivent correspondre
 Enter your new password !: Saisir votre nouveau mot de passe !
 Repeat entering your new password !: Repetez la saisie de votre nouveau mot de passe
 Please enter a password: Veuillez entrer un mot de passe svp !
-You should agree to our terms. : Vous devez accepter nos conditions.
+You should agree to our terms.: Vous devez accepter nos conditions.
 Your password should be at least {{ limit }} characters: Votre mot de passe doit comporter au moins {{ limit }} caractères

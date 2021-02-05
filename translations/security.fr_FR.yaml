@@ -1,5 +1,5 @@
 Invalid credentials.: Vos paramètres de connexions sont non valides !!!
-Username could not be found.: Attention, cet utilisateur est inconnu du système !!!
+Username could not be found.: Attention, cet utilisateur est inconnu du système! Assurez-vous que vous avez bien validé votre email.
 Invalid CSRF token.: Token non valide !!!
 The password fields must match.: Les champs du mot de passe doivent correspondre.
 Enter your new password !: Saisir votre nouveau mot de passe !
