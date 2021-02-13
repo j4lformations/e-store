@@ -112,7 +112,7 @@ class StoreAuthenticator extends AbstractFormLoginAuthenticator implements Passw
         if ($user !== null && !in_array('ROLE_ADMIN', $user->getRoles())) {
             return new RedirectResponse($this->urlGenerator->generate('store_accueil'));
         }
-        return new RedirectResponse($this->urlGenerator->generate('store_accueil'));
+        return new RedirectResponse($this->urlGenerator->generate('db_accueil'));
     }
 
     protected function getLoginUrl()
